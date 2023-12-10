@@ -57,15 +57,10 @@ struct AnimatedButtonStyle: ButtonStyle {
         .scaleEffect(configuration.isPressed ? 0.86 : 1.0)
         .animation(.easeOut(duration: 0.22), value: configuration.isPressed)
         .background(
-            Group {
-                if configuration.isPressed {
-                    Circle()
-                        .fill(Color.gray.opacity(0.2))
-                        .frame(width: 100, height: 100)
-                        .scaleEffect(animation ? 0 : 1)
-                        .animation(.easeOut(duration: 0.22), value: animation)
-                }
-            }
+            Circle()
+                .fill(Color.gray.opacity(0.2))
+                .scaleEffect(configuration.isPressed ? 1 : 0)
+                .animation(.easeOut(duration: 0.22), value: configuration.isPressed)
         )
         .onTapGesture {
             withAnimation(.interactiveSpring(duration: 0.22)) {
